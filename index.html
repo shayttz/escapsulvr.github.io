@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio Responsivo</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
             background-color: #4CAF50;
@@ -43,39 +44,25 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            margin-bottom: 20px;
+            margin: 10px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1em;
+            width: 80%;
+            text-decoration: none;
         }
         .button:hover {
             background-color: #45a049;
         }
+        .whatsapp {
+            background-color: #25D366;
+        }
         .placeholder-text {
             color: gray;
             font-size: 0.9em;
-        }
-
-        /* Estilos para telas menores */
-        @media (max-width: 600px) {
-            .container {
-                width: 80%;
-                padding: 15px;
-            }
-            .logo {
-                width: 40px;
-                height: 40px;
-            }
-            .name {
-                font-size: 1em;
-            }
-            .title {
-                font-size: 0.9em;
-            }
-            .button {
-                padding: 8px 15px;
-                font-size: 0.9em;
-            }
-            .placeholder-text {
-                font-size: 0.8em;
-            }
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -84,9 +71,20 @@
         <img src="logo.png" alt="Logo" class="logo">
         <div class="name">Escapsul VR</div>
         <div class="title">Loja especializada no comércio de Escapamentos Automotivos - em Volta Redonda - RJ</div>
-        <a href="https://www.canva.com/design/DAGmBtGvTqY/NOKnUl4j81fQUmDz4whxww/view?utm_content=DAGmBtGvTqY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdffe7b81bf" target="_blank">
-            <button class="button">Acesse nosso catálogo virtual!</button>
+
+        <!-- Botão do catálogo -->
+        <a href="https://www.canva.com/design/DAGmBtGvTqY/NOKnUl4j81fQUmDz4whxww/view?utm_content=DAGmBtGvTqY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdffe7b81bf" target="_blank" class="button">Acesse nosso catálogo virtual!</a>
+
+        <!-- Botão do WhatsApp 1 -->
+        <a href="https://wa.me/+5524999314770" target="_blank" class="button whatsapp">
+            <i class="fab fa-whatsapp"></i> Fale conosco!
         </a>
+
+        <!-- Botão do WhatsApp 2 -->
+        <a href="https://wa.me/+552433466113" target="_blank" class="button whatsapp">
+            <i class="fab fa-whatsapp"></i> Suporte ao cliente
+        </a>
+
         <div class="placeholder-text">
             finge que tem muita coisa escrita aqui<br>
             finge que tem muita coisa escrita aqui<br>
@@ -94,6 +92,6 @@
             finge que tem muita coisa escrita aqui<br>
             finge que tem muita coisa escrita aqui<br>
         </div>
-</div>
+    </div>
 </body>
 </html>
