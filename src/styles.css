@@ -38,7 +38,7 @@ body {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
-    border: none;
+    border: 2px solid #388E3C; /* Adiciona uma borda verde escura */
     border-radius: 5px;
     cursor: pointer;
     margin: 10px auto;
@@ -57,12 +57,7 @@ body {
 
 .whatsapp {
     background-color: #25D366;
-}
-
-.placeholder-text {
-    color: gray;
-    font-size: 0.9em;
-    margin-top: 20px;
+    border: 2px solid #128C7E; /* Borda verde escura para WhatsApp */
 }
 
 .google-maps-button {
@@ -72,6 +67,8 @@ body {
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    border: 2px solid #D32F2F; /* Borda vermelha para Google Maps */
+    border-radius: 10px; /* Cantos arredondados */
 }
 
 .google-maps-button img {
