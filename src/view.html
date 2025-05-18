@@ -26,55 +26,55 @@
     <canvas id="pdf-container"></canvas>
 
     <script>
-        const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
-        let pdfDoc = null, pageNum = 1, scale = 1.5;
+    const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
+    let pdfDoc = null, pageNum = 1, scale = 1; // Reduzindo escala inicial para melhorar performance
 
-        function adjustScale() {
-            // Detecta tamanho da tela para ajustar a escala
-            const width = window.innerWidth;
-            scale = width < 768 ? 0.8 : 1.5; // Ajusta a escala para dispositivos menores
-        }
+    function adjustScale() {
+        // Ajusta escala baseado no tamanho da tela
+        const width = window.innerWidth;
+        scale = width < 768 ? 0.7 : 1; // Ajuste dinâmico para dispositivos móveis
+    }
 
-        pdfjsLib.getDocument(url).promise.then(doc => {
-            pdfDoc = doc;
-            document.getElementById("page-info").textContent = `Página 1 de ${pdfDoc.numPages}`;
-            adjustScale(); // Define a escala inicial
-            renderPage(pageNum);
+    pdfjsLib.getDocument(url).promise.then(doc => {
+        pdfDoc = doc;
+        document.getElementById("page-info").textContent = `Página 1 de ${pdfDoc.numPages}`;
+        adjustScale(); // Define a escala inicial
+        renderPage(pageNum);
+    });
+
+    function renderPage(num) {
+        pdfDoc.getPage(num).then(page => {
+            const viewport = page.getViewport({ scale });
+            const canvas = document.getElementById('pdf-container');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            document.getElementById("page-info").textContent = `Página ${num} de ${pdfDoc.numPages}`;
+
+            page.render({ canvasContext: ctx, viewport });
         });
+    }
 
-        function renderPage(num) {
-            pdfDoc.getPage(num).then(page => {
-                const viewport = page.getViewport({ scale });
-                const canvas = document.getElementById('pdf-container');
-                const ctx = canvas.getContext('2d');
-
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-                document.getElementById("page-info").textContent = `Página ${num} de ${pdfDoc.numPages}`;
-
-                page.render({ canvasContext: ctx, viewport });
-            });
-        }
-
-        function nextPage() {
-            if (pageNum < pdfDoc.numPages) {
-                pageNum++;
-                renderPage(pageNum);
-            }
-        }
-
-        function prevPage() {
-            if (pageNum > 1) {
-                pageNum--;
-                renderPage(pageNum);
-            }
-        }
-
-        window.addEventListener("resize", () => {
-            adjustScale();
+    function nextPage() {
+        if (pageNum < pdfDoc.numPages) {
+            pageNum++;
             renderPage(pageNum);
-        });
-    </script>
+        }
+    }
 
-</body>
+    function prevPage() {
+        if (pageNum > 1) {
+            pageNum--;
+            renderPage(pageNum);
+        }
+    }
+
+    window.addEventListener("resize", () => {
+        adjustScale();
+        renderPage(pageNum);
+    });
+</script>
+
+    </body>
 </html>
