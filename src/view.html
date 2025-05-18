@@ -7,9 +7,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.min.js"></script>
     <style>
         body { margin: 0; display: flex; flex-direction: column; align-items: center; background: #f8f8f8; }
-        #pdf-container { width: 90vw; height: 90vh; }
-        .controls { margin: 10px; }
-        button { padding: 8px 15px; font-size: 16px; cursor: pointer; margin: 5px; }
+        #pdf-container { width: 90vw; height: 90vh; max-width: 100%; }
+        .controls { margin: 10px; display: flex; gap: 10px; justify-content: center; }
+        button { padding: 8px 15px; font-size: 16px; cursor: pointer; }
+        @media (max-width: 768px) {
+            #pdf-container { width: 95vw; height: 85vh; }
+        }
     </style>
 </head>
 <body>
@@ -23,18 +26,25 @@
     <canvas id="pdf-container"></canvas>
 
     <script>
-      const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
-        let pdfDoc = null, pageNum = 1;
+        const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
+        let pdfDoc = null, pageNum = 1, scale = 1.5;
+
+        function adjustScale() {
+            // Detecta tamanho da tela para ajustar a escala
+            const width = window.innerWidth;
+            scale = width < 768 ? 0.8 : 1.5; // Ajusta a escala para dispositivos menores
+        }
 
         pdfjsLib.getDocument(url).promise.then(doc => {
             pdfDoc = doc;
             document.getElementById("page-info").textContent = `Página 1 de ${pdfDoc.numPages}`;
+            adjustScale(); // Define a escala inicial
             renderPage(pageNum);
         });
 
         function renderPage(num) {
             pdfDoc.getPage(num).then(page => {
-                const viewport = page.getViewport({ scale: 1.5 });
+                const viewport = page.getViewport({ scale });
                 const canvas = document.getElementById('pdf-container');
                 const ctx = canvas.getContext('2d');
 
@@ -59,6 +69,11 @@
                 renderPage(pageNum);
             }
         }
+
+        window.addEventListener("resize", () => {
+            adjustScale();
+            renderPage(pageNum);
+        });
     </script>
 
 </body>
