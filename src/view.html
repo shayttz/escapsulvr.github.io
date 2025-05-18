@@ -25,16 +25,20 @@
 
     <canvas id="pdf-container"></canvas>
 
-<script>
-    const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Seu PDF no GitHub Pages
+    <script>
+    const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
     let pdfDoc = null, pageNum = 1, scale = 1;
 
     function adjustScale(page) {
         const containerWidth = window.innerWidth * 0.9; // 90% da largura da tela
-        const viewport = page.getViewport({ scale: 1 }); // Tamanho original do PDF
+        const viewport = page.getViewport({ scale: 1 }); // Pegamos o tamanho original da página
 
-        // Calcula a escala proporcional para ajustar na tela
+        // Calcula a escala proporcional para que mantenha o formato A4
         scale = containerWidth / viewport.width;
+        
+        // Ajusta a altura do canvas proporcionalmente à largura A4
+        const containerHeight = (viewport.height / viewport.width) * containerWidth;
+        document.getElementById('pdf-container').height = containerHeight;
     }
 
     pdfjsLib.getDocument(url).promise.then(doc => {
@@ -48,7 +52,7 @@
 
     function renderPage(num) {
         pdfDoc.getPage(num).then(page => {
-            adjustScale(page); // Ajusta a escala corretamente
+            adjustScale(page); // Ajusta a escala corretamente para manter o formato A4
             const viewport = page.getViewport({ scale });
 
             const canvas = document.getElementById('pdf-container');
@@ -77,9 +81,8 @@
     }
 
     window.addEventListener("resize", () => {
-        renderPage(pageNum); // Redimensiona o PDF corretamente ao mudar o tamanho da tela
+        renderPage(pageNum); // Redimensiona corretamente ao alterar o tamanho da tela
     });
 </script>
-
     </body>
 </html>
