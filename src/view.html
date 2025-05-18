@@ -25,26 +25,32 @@
 
     <canvas id="pdf-container"></canvas>
 
-    <script>
-    const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
-    let pdfDoc = null, pageNum = 1, scale = 1; // Reduzindo escala inicial para melhorar performance
+<script>
+    const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Seu PDF no GitHub Pages
+    let pdfDoc = null, pageNum = 1, scale = 1;
 
-    function adjustScale() {
-        // Ajusta escala baseado no tamanho da tela
-        const width = window.innerWidth;
-        scale = width < 768 ? 0.7 : 1; // Ajuste dinâmico para dispositivos móveis
+    function adjustScale(page) {
+        const containerWidth = window.innerWidth * 0.9; // 90% da largura da tela
+        const viewport = page.getViewport({ scale: 1 }); // Tamanho original do PDF
+
+        // Calcula a escala proporcional para ajustar na tela
+        scale = containerWidth / viewport.width;
     }
 
     pdfjsLib.getDocument(url).promise.then(doc => {
         pdfDoc = doc;
         document.getElementById("page-info").textContent = `Página 1 de ${pdfDoc.numPages}`;
-        adjustScale(); // Define a escala inicial
-        renderPage(pageNum);
+        pdfDoc.getPage(1).then(page => {
+            adjustScale(page);
+            renderPage(pageNum);
+        });
     });
 
     function renderPage(num) {
         pdfDoc.getPage(num).then(page => {
+            adjustScale(page); // Ajusta a escala corretamente
             const viewport = page.getViewport({ scale });
+
             const canvas = document.getElementById('pdf-container');
             const ctx = canvas.getContext('2d');
 
@@ -71,8 +77,7 @@
     }
 
     window.addEventListener("resize", () => {
-        adjustScale();
-        renderPage(pageNum);
+        renderPage(pageNum); // Redimensiona o PDF corretamente ao mudar o tamanho da tela
     });
 </script>
 
