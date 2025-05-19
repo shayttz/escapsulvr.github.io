@@ -112,10 +112,9 @@ body {
 }
 
 #imagem-container img {
-    width: 140%; /* Aumenta a imagem em 40% */
-    max-width: 840px; /* Mantém um limite para telas grandes */
-    height: auto;
-    object-fit: contain;
+    width: 1276px; /* Largura fixa */
+    height: 308px; /* Altura fixa */
+    object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
     border: 1px solid #ccc;
     padding: 10px;
     background-color: white;
