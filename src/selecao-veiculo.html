@@ -7,8 +7,8 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         select { padding: 10px; margin: 10px; }
-        .gallery { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; visibility: hidden; }
-        .gallery img { width: 250px; height: auto; object-fit: contain; border: 1px solid #ccc; padding: 5px; background-color: white; }
+        #imagem-container { display: flex; justify-content: center; margin-top: 20px; }
+        #imagem-container img { width: 90%; max-width: 600px; height: auto; object-fit: contain; border: 1px solid #ccc; padding: 10px; background-color: white; visibility: hidden; }
     </style>
 </head>
 <body>
@@ -28,26 +28,24 @@
     </select>
 
     <label for="versao">Versão:</label>
-    <select id="versao" onchange="atualizarImagens()">
+    <select id="versao" onchange="atualizarImagem()">
         <option value="">Selecione</option>
     </select>
 
-    <div class="gallery" id="imagem-container"></div>
+    <div id="imagem-container">
+        <img id="imagem" src="" alt="Imagem do catálogo">
+    </div>
 
     <script>
         const dados = {
-            chevrolet: {
-                agile: ["1.4 (Todos os modelos desde 2009)"]
-            },
-            fiat: {
-                palio: ["1.0 Fire", "1.4 Sporting"]
-            }
+            chevrolet: { agile: ["1.4 (Todos os modelos desde 2009)"] },
+            fiat: { palio: ["1.0 Fire", "1.4 Sporting"] }
         };
 
         const imagensCatalogo = {
-            "chevrolet-agile-1.4 (Todos os modelos desde 2009)": ["img/chevrolet_agile_14.png", "img/chevrolet_agile_141.png", "img/chevrolet_agile_142.png", "img/chevrolet_agile_143.png"],
-            "fiat-palio-1.0 Fire": ["img/catalogo_fiat1.jpg"],
-            "fiat-palio-1.4 Sporting": ["img/catalogo_fiat2.jpg"]
+            "chevrolet-agile-1.4 (Todos os modelos desde 2009)": "img/chevrolet/agile/1.png",
+            "fiat-palio-1.0 Fire": "img/catalogo_fiat1.jpg",
+            "fiat-palio-1.4 Sporting": "img/catalogo_fiat2.jpg"
         };
 
         function atualizarModelos() {
@@ -61,7 +59,7 @@
                 });
             }
 
-            document.getElementById("imagem-container").style.visibility = "hidden";
+            document.getElementById("imagem").style.visibility = "hidden";
         }
 
         function atualizarVersoes() {
@@ -76,28 +74,21 @@
                 });
             }
 
-            document.getElementById("imagem-container").style.visibility = "hidden";
+            document.getElementById("imagem").style.visibility = "hidden";
         }
 
-        function atualizarImagens() {
+        function atualizarImagem() {
             const marca = document.getElementById("marca").value;
             const modelo = document.getElementById("modelo").value;
             const versao = document.getElementById("versao").value;
             const chaveImagem = `${marca}-${modelo}-${versao}`;
-            const imagemContainer = document.getElementById("imagem-container");
+            const imagem = document.getElementById("imagem");
 
-            imagemContainer.innerHTML = "";
-            
             if (imagensCatalogo[chaveImagem]) {
-                imagensCatalogo[chaveImagem].forEach(imgSrc => {
-                    const imgElement = document.createElement("img");
-                    imgElement.src = imgSrc;
-                    imagemContainer.appendChild(imgElement);
-                });
-
-                imagemContainer.style.visibility = "visible";
+                imagem.src = imagensCatalogo[chaveImagem];
+                imagem.style.visibility = "visible";
             } else {
-                imagemContainer.style.visibility = "hidden";
+                imagem.style.visibility = "hidden";
             }
         }
     </script>
