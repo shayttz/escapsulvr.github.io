@@ -1,12 +1,13 @@
 body {
     background-color: #4CAF50;
+    overflow: auto; /* Permite rolagem vertical */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
-}
+    font-family: Arial, sans-serif
+    }
 
 .container {
     background-color: white;
