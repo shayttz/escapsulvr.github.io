@@ -106,10 +106,21 @@ body {
 
 #imagem-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Coloca as imagens uma abaixo da outra */
+    align-items: center; /* Centraliza as imagens */
+    gap: 20px; /* Espaço entre as imagens */
     margin-top: 20px;
     width: 100%;
+}
+
+#imagem-container img {
+    width: 90%; /* Ajuste para telas maiores */
+    max-width: 600px; /* Evita imagens muito grandes */
+    height: auto; /* Mantém proporção */
+    object-fit: contain;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: white;
 }
 
 #imagem {
