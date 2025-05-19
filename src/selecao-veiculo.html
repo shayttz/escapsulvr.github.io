@@ -7,8 +7,8 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         select { padding: 10px; margin: 10px; }
-        .gallery { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
-        .gallery img { width: 200px; height: auto; }
+        .gallery { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; visibility: hidden; }
+        .gallery img { width: 250px; height: auto; object-fit: contain; border: 1px solid #ccc; padding: 5px; background-color: white; }
     </style>
 </head>
 <body>
@@ -45,8 +45,9 @@
         };
 
         const imagensCatalogo = {
-            chevrolet: ["img/chevrolet_agile_14.png", "img/chevrolet_agile_141.png", "img/chevrolet_agile_142.png", "img/chevrolet_agile_143.png"],
-            fiat: ["img/catalogo_fiat1.jpg", "img/catalogo_fiat2.jpg"]
+            "chevrolet-agile-1.4 (Todos os modelos desde 2009)": ["img/chevrolet_agile_14.png", "img/chevrolet_agile_141.png", "img/chevrolet_agile_142.png", "img/chevrolet_agile_143.png"],
+            "fiat-palio-1.0 Fire": ["img/catalogo_fiat1.jpg"],
+            "fiat-palio-1.4 Sporting": ["img/catalogo_fiat2.jpg"]
         };
 
         function atualizarModelos() {
@@ -58,8 +59,9 @@
                 Object.keys(dados[marca]).forEach(modelo => {
                     modeloSelect.innerHTML += `<option value="${modelo}">${modelo}</option>`;
                 });
-                atualizarImagensCatalogo(marca);
             }
+
+            document.getElementById("imagem-container").style.visibility = "hidden";
         }
 
         function atualizarVersoes() {
@@ -73,18 +75,29 @@
                     versaoSelect.innerHTML += `<option value="${versao}">${versao}</option>`;
                 });
             }
+
+            document.getElementById("imagem-container").style.visibility = "hidden";
         }
 
-        function atualizarImagensCatalogo(marca) {
+        function atualizarImagens() {
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const versao = document.getElementById("versao").value;
+            const chaveImagem = `${marca}-${modelo}-${versao}`;
             const imagemContainer = document.getElementById("imagem-container");
-            imagemContainer.innerHTML = "";
 
-            if (imagensCatalogo[marca]) {
-                imagensCatalogo[marca].forEach(imgSrc => {
+            imagemContainer.innerHTML = "";
+            
+            if (imagensCatalogo[chaveImagem]) {
+                imagensCatalogo[chaveImagem].forEach(imgSrc => {
                     const imgElement = document.createElement("img");
                     imgElement.src = imgSrc;
                     imagemContainer.appendChild(imgElement);
                 });
+
+                imagemContainer.style.visibility = "visible";
+            } else {
+                imagemContainer.style.visibility = "hidden";
             }
         }
     </script>
