@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleção de Veículo</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        select { padding: 10px; margin: 10px; }
+        img { width: 300px; height: auto; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <h1>Escolha seu veículo</h1>
+
+    <label for="marca">Marca:</label>
+    <select id="marca" onchange="atualizarModelos()">
+        <option value="">Selecione</option>
+        <option value="chevrolet">Chevrolet</option>
+    </select>
+
+    <label for="modelo">Modelo:</label>
+    <select id="modelo" onchange="atualizarVersoes()">
+        <option value="">Selecione</option>
+    </select>
+
+    <label for="versao">Versão:</label>
+    <select id="versao" onchange="atualizarImagem()">
+        <option value="">Selecione</option>
+    </select>
+
+    <div id="imagem-container">
+        <img id="imagem" src="" alt="Imagem do veículo" style="display: none;">
+    </div>
+
+    <script>
+        const dados = {
+            chevrolet: {
+                agile: ["1.4 (Todos os modelos desde 2009)"]
+            }
+        };
+
+        const imagens = {
+            "chevrolet-agile-1.4 (Todos os modelos desde 2009)": "img/chevrolet_agile_14.jpg"
+        };
+
+        function atualizarModelos() {
+            const marca = document.getElementById("marca").value;
+            const modeloSelect = document.getElementById("modelo");
+            modeloSelect.innerHTML = "<option value=''>Selecione</option>";
+
+            if (marca && dados[marca]) {
+                Object.keys(dados[marca]).forEach(modelo => {
+                    modeloSelect.innerHTML += `<option value="${modelo}">${modelo}</option>`;
+                });
+            }
+        }
+
+        function atualizarVersoes() {
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const versaoSelect = document.getElementById("versao");
+            versaoSelect.innerHTML = "<option value=''>Selecione</option>";
+
+            if (marca && modelo && dados[marca][modelo]) {
+                dados[marca][modelo].forEach(versao => {
+                    versaoSelect.innerHTML += `<option value="${versao}">${versao}</option>`;
+                });
+            }
+        }
+
+        function atualizarImagem() {
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const versao = document.getElementById("versao").value;
+            const chaveImagem = `${marca}-${modelo}-${versao}`;
+            const imagem = document.getElementById("imagem");
+
+            if (imagens[chaveImagem]) {
+                imagem.src = imagens[chaveImagem];
+                imagem.style.display = "block";
+            } else {
+                imagem.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
