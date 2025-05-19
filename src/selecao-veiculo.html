@@ -8,24 +8,26 @@
 </head>
 <body>
 
-    <h1>Escolha seu veículo</h1>
+    <div class="selecao-container">
+        <h1>Escolha seu veículo</h1>
 
-    <label for="marca">Marca:</label>
-    <select id="marca" onchange="atualizarModelos()">
-        <option value="">Selecione</option>
-        <option value="chevrolet">Chevrolet</option>
-        <option value="fiat">Fiat</option>
-    </select>
+        <label for="marca">Marca:</label>
+        <select id="marca" onchange="atualizarModelos()">
+            <option value="">Selecione</option>
+            <option value="chevrolet">Chevrolet</option>
+            <option value="fiat">Fiat</option>
+        </select>
 
-    <label for="modelo">Modelo:</label>
-    <select id="modelo" onchange="atualizarVersoes()">
-        <option value="">Selecione</option>
-    </select>
+        <label for="modelo">Modelo:</label>
+        <select id="modelo" onchange="atualizarVersoes()">
+            <option value="">Selecione</option>
+        </select>
 
-    <label for="versao">Versão:</label>
-    <select id="versao" onchange="atualizarImagem()">
-        <option value="">Selecione</option>
-    </select>
+        <label for="versao">Versão:</label>
+        <select id="versao" onchange="atualizarImagem()">
+            <option value="">Selecione</option>
+        </select>
+    </div>
 
     <div id="imagem-container">
         <img id="imagem" src="" alt="Imagem do catálogo">
@@ -54,39 +56,4 @@
                 });
             }
 
-            document.getElementById("imagem").style.visibility = "hidden";
-        }
-
-        function atualizarVersoes() {
-            const marca = document.getElementById("marca").value;
-            const modelo = document.getElementById("modelo").value;
-            const versaoSelect = document.getElementById("versao");
-            versaoSelect.innerHTML = "<option value=''>Selecione</option>";
-
-            if (marca && modelo && dados[marca][modelo]) {
-                dados[marca][modelo].forEach(versao => {
-                    versaoSelect.innerHTML += `<option value="${versao}">${versao}</option>`;
-                });
-            }
-
-            document.getElementById("imagem").style.visibility = "hidden";
-        }
-
-        function atualizarImagem() {
-            const marca = document.getElementById("marca").value;
-            const modelo = document.getElementById("modelo").value;
-            const versao = document.getElementById("versao").value;
-            const chaveImagem = `${marca}-${modelo}-${versao}`;
-            const imagem = document.getElementById("imagem");
-
-            if (imagensCatalogo[chaveImagem]) {
-                imagem.src = imagensCatalogo[chaveImagem];
-                imagem.style.visibility = "visible";
-            } else {
-                imagem.style.visibility = "hidden";
-            }
-        }
-    </script>
-
-</body>
-</html>
+            document.getElementById("imagem").style.visibility
