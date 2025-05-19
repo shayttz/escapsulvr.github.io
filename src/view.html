@@ -25,20 +25,24 @@
 
     <canvas id="pdf-container"></canvas>
 
-    <script>
+   <script>
     const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
     let pdfDoc = null, pageNum = 1, scale = 1;
 
     function adjustScale(page) {
-        const containerWidth = window.innerWidth * 0.9; // 90% da largura da tela
         const viewport = page.getViewport({ scale: 1 }); // Pegamos o tamanho original da página
 
-        // Calcula a escala proporcional para que mantenha o formato A4
-        scale = containerWidth / viewport.width;
-        
-        // Ajusta a altura do canvas proporcionalmente à largura A4
-        const containerHeight = (viewport.height / viewport.width) * containerWidth;
-        document.getElementById('pdf-container').height = containerHeight;
+        // Detecta se está sendo acessado via computador
+        const isDesktop = window.innerWidth >= 1024;
+
+        if (isDesktop) {
+            // Define a resolução fixa de 1240 x 1754 para PCs
+            scale = 1240 / viewport.width;
+        } else {
+            // Ajuste proporcional para dispositivos móveis
+            const containerWidth = window.innerWidth * 0.9;
+            scale = containerWidth / viewport.width;
+        }
     }
 
     pdfjsLib.getDocument(url).promise.then(doc => {
@@ -52,14 +56,17 @@
 
     function renderPage(num) {
         pdfDoc.getPage(num).then(page => {
-            adjustScale(page); // Ajusta a escala corretamente para manter o formato A4
+            adjustScale(page); // Ajusta escala corretamente
             const viewport = page.getViewport({ scale });
 
             const canvas = document.getElementById('pdf-container');
             const ctx = canvas.getContext('2d');
 
-            canvas.width = viewport.width;
-            canvas.height = viewport.height;
+            // Define largura fixa para computadores
+            const isDesktop = window.innerWidth >= 1024;
+            canvas.width = isDesktop ? 1240 : viewport.width;
+            canvas.height = isDesktop ? 1754 : viewport.height;
+
             document.getElementById("page-info").textContent = `Página ${num} de ${pdfDoc.numPages}`;
 
             page.render({ canvasContext: ctx, viewport });
@@ -83,6 +90,6 @@
     window.addEventListener("resize", () => {
         renderPage(pageNum); // Redimensiona corretamente ao alterar o tamanho da tela
     });
-    </script>
+</script>
     </body>
 </html>
