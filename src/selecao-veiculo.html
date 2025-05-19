@@ -7,7 +7,8 @@
     <style>
         body { font-family: Arial, sans-serif; text-align: center; }
         select { padding: 10px; margin: 10px; }
-        img { width: 300px; height: auto; margin-top: 20px; }
+        .gallery { display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap; }
+        .gallery img { width: 200px; height: auto; }
     </style>
 </head>
 <body>
@@ -18,6 +19,7 @@
     <select id="marca" onchange="atualizarModelos()">
         <option value="">Selecione</option>
         <option value="chevrolet">Chevrolet</option>
+        <option value="fiat">Fiat</option>
     </select>
 
     <label for="modelo">Modelo:</label>
@@ -26,23 +28,25 @@
     </select>
 
     <label for="versao">Versão:</label>
-    <select id="versao" onchange="atualizarImagem()">
+    <select id="versao" onchange="atualizarImagens()">
         <option value="">Selecione</option>
     </select>
 
-    <div id="imagem-container">
-        <img id="imagem" src="" alt="Imagem do veículo" style="display: none;">
-    </div>
+    <div class="gallery" id="imagem-container"></div>
 
     <script>
         const dados = {
             chevrolet: {
                 agile: ["1.4 (Todos os modelos desde 2009)"]
+            },
+            fiat: {
+                palio: ["1.0 Fire", "1.4 Sporting"]
             }
         };
 
-        const imagens = {
-            "chevrolet-agile-1.4 (Todos os modelos desde 2009)": "img/chevrolet_agile_14.png"
+        const imagensCatalogo = {
+            chevrolet: ["img/chevrolet_agile_14.png", "img/chevrolet_agile_141.png", "img/chevrolet_agile_142.png", "img/chevrolet_agile_143.png"],
+            fiat: ["img/catalogo_fiat1.jpg", "img/catalogo_fiat2.jpg"]
         };
 
         function atualizarModelos() {
@@ -54,6 +58,7 @@
                 Object.keys(dados[marca]).forEach(modelo => {
                     modeloSelect.innerHTML += `<option value="${modelo}">${modelo}</option>`;
                 });
+                atualizarImagensCatalogo(marca);
             }
         }
 
@@ -70,18 +75,16 @@
             }
         }
 
-        function atualizarImagem() {
-            const marca = document.getElementById("marca").value;
-            const modelo = document.getElementById("modelo").value;
-            const versao = document.getElementById("versao").value;
-            const chaveImagem = `${marca}-${modelo}-${versao}`;
-            const imagem = document.getElementById("imagem");
+        function atualizarImagensCatalogo(marca) {
+            const imagemContainer = document.getElementById("imagem-container");
+            imagemContainer.innerHTML = "";
 
-            if (imagens[chaveImagem]) {
-                imagem.src = imagens[chaveImagem];
-                imagem.style.display = "block";
-            } else {
-                imagem.style.display = "none";
+            if (imagensCatalogo[marca]) {
+                imagensCatalogo[marca].forEach(imgSrc => {
+                    const imgElement = document.createElement("img");
+                    imgElement.src = imgSrc;
+                    imagemContainer.appendChild(imgElement);
+                });
             }
         }
     </script>
