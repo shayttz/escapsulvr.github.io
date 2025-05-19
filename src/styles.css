@@ -112,8 +112,8 @@ body {
 }
 
 #imagem-container img {
-    width: 1276px; /* Largura fixa */
-    height: 308px; /* Altura fixa */
+    width: 1920px; /* Largura fixa */
+    height: 1080px; /* Altura fixa */
     border: 1px solid #ccc;
     padding: 10px;
     background-color: white;
