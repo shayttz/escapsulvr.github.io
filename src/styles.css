@@ -103,3 +103,16 @@ body {
         height: 75vh;
     }
 }
+
+#imagem-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#imagem {
+    max-width: 80%;
+    height: auto;
+}
