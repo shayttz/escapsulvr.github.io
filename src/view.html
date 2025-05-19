@@ -3,81 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizar PDF</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.10.111/pdf.min.js"></script>
-    <style>
-        body { margin: 0; display: flex; flex-direction: column; align-items: center; background: #f8f8f8; }
-        #pdf-container { width: 90vw; height: 90vh; max-width: 100%; }
-        .controls { margin: 10px; display: flex; gap: 10px; justify-content: center; }
-        button { padding: 8px 15px; font-size: 16px; cursor: pointer; }
-        @media (max-width: 768px) {
-            #pdf-container { width: 95vw; height: 85vh; }
-        }
-    </style>
+    <title>Visualizar Catálogo</title>
 </head>
 <body>
-
-    <div class="controls">
-        <button onclick="prevPage()">⬅ Página Anterior</button>
-        <span id="page-info"></span>
-        <button onclick="nextPage()">➡ Próxima Página</button>
-    </div>
-
-    <canvas id="pdf-container"></canvas>
-
-<script>
-        const url = "https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf"; // Ajuste para seu PDF
-        let pdfDoc = null, pageNum = 1, scale = 1;
-
-        function adjustScale(page) {
-            const viewport = page.getViewport({ scale: 1 }); // Pegamos o tamanho original da página
-            const containerWidth = window.innerWidth >= 1024 ? 1240 : window.innerWidth * 0.9; // Ajusta tamanho para computadores ou dispositivos móveis
-            scale = containerWidth / viewport.width;
-        }
-
-        pdfjsLib.getDocument(url).promise.then(doc => {
-            pdfDoc = doc;
-            document.getElementById("page-info").textContent = `Página 1 de ${pdfDoc.numPages}`;
-            pdfDoc.getPage(1).then(page => {
-                adjustScale(page);
-                renderPage(pageNum);
-            });
-        });
-
-        function renderPage(num) {
-            pdfDoc.getPage(num).then(page => {
-                adjustScale(page); // Ajusta escala corretamente
-                const viewport = page.getViewport({ scale });
-
-                const canvas = document.getElementById('pdf-container');
-                const ctx = canvas.getContext('2d');
-
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-                document.getElementById("page-info").textContent = `Página ${num} de ${pdfDoc.numPages}`;
-
-                page.render({ canvasContext: ctx, viewport });
-            });
-        }
-
-        function nextPage() {
-            if (pageNum < pdfDoc.numPages) {
-                pageNum++;
-                renderPage(pageNum);
-            }
-        }
-
-        function prevPage() {
-            if (pageNum > 1) {
-                pageNum--;
-                renderPage(pageNum);
-            }
-        }
-
-        window.addEventListener("resize", () => {
-            renderPage(pageNum); // Redimensiona corretamente ao alterar o tamanho da tela
-        });
-    </script>
-
-    </body>
+    <h1>Catálogo Escapsul VR</h1>
+    <button onclick="window.open('https://shayttz.github.io/escapsulvr.github.io/src/Catalogo2025.pdf', '_blank')">
+        Abrir Catálogo
+    </button>
+</body>
 </html>
