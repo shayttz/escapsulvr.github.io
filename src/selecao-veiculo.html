@@ -35,12 +35,12 @@
 
     <script>
         const dados = {
-            chevrolet: { agile: ["1.4 (Todos os modelos desde 2009)"] },
+            chevrolet: { agile: ["1.4 (2009 em diante)"] },
             fiat: { palio: ["1.0 Fire", "1.4 Sporting"] }
         };
 
         const imagensCatalogo = {
-            "chevrolet-agile-1.4 (Todos os modelos desde 2009)": "img/chevrolet/agile/1.png",
+            "chevrolet-agile-1.4 (2009 em diante)": "img/chevrolet/agile/1.png",
             "fiat-palio-1.0 Fire": "img/catalogo_fiat1.jpg",
             "fiat-palio-1.4 Sporting": "img/catalogo_fiat2.jpg"
         };
@@ -56,4 +56,39 @@
                 });
             }
 
-            document.getElementById("imagem").style.visibility
+            document.getElementById("imagem").style.visibility = "hidden";
+        }
+
+        function atualizarVersoes() {
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const versaoSelect = document.getElementById("versao");
+            versaoSelect.innerHTML = "<option value=''>Selecione</option>";
+
+            if (marca && modelo && dados[marca][modelo]) {
+                dados[marca][modelo].forEach(versao => {
+                    versaoSelect.innerHTML += `<option value="${versao}">${versao}</option>`;
+                });
+            }
+
+            document.getElementById("imagem").style.visibility = "hidden";
+        }
+
+        function atualizarImagem() {
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const versao = document.getElementById("versao").value;
+            const chaveImagem = `${marca}-${modelo}-${versao}`;
+            const imagem = document.getElementById("imagem");
+
+            if (imagensCatalogo[chaveImagem]) {
+                imagem.src = imagensCatalogo[chaveImagem];
+                imagem.style.visibility = "visible";
+            } else {
+                imagem.style.visibility = "hidden";
+            }
+        }
+    </script>
+
+</body>
+</html>
