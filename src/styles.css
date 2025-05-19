@@ -118,4 +118,5 @@ body {
     padding: 10px;
     background-color: white;
     visibility: hidden;
+    object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
 }
