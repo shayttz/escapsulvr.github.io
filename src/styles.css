@@ -114,7 +114,6 @@ body {
 #imagem-container img {
     width: 1276px; /* Largura fixa */
     height: 308px; /* Altura fixa */
-    object-fit: cover; /* Garante que a imagem se ajuste sem distorção */
     border: 1px solid #ccc;
     padding: 10px;
     background-color: white;
