@@ -108,8 +108,8 @@
       box-sizing: border-box;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       transition: box-shadow 0.3s ease;
-      border: transparent; /* Changed border to transparent */
-      background: none; /* Removed background to keep it clean */
+      border: transparent;
+      background: none;
     }
     .google-maps-button:hover {
       box-shadow: 0 8px 16px rgba(0,0,0,0.3);
@@ -124,22 +124,50 @@
       border: none;
       background: none;
     }
-    /* Bottom row with maps and "qual a minha peça?" aligned horizontally */
+    /* Funcionarios button */
+    .funcionarios-button {
+      display: inline-block;
+      border-radius: 12px;
+      padding: 0;
+      margin-top: 8px;
+      width: 50px;
+      height: 50px;
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: box-shadow 0.3s ease;
+      border: transparent;
+      background: none;
+    }
+    .funcionarios-button:hover {
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+    }
+    .funcionarios-button img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      display: block;
+      object-fit: cover;
+      border: none;
+      background: none;
+    }
+    /* Bottom row with maps, funcionarios and "qual a minha peça?" aligned horizontally */
     .bottom-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
       width: 100%;
-      max-width: 220px;
+      max-width: 280px; /* increased width to fit 3 items */
       margin-top: 8px;
       gap: 12px;
       box-sizing: border-box;
     }
-    .bottom-row .google-maps-button {
+    .bottom-row .google-maps-button,
+    .bottom-row .funcionarios-button {
       margin: 0;
       flex-shrink: 0;
-      background: none; /* Removed background */
-      box-shadow: none; /* Removed shadow for cleaner look */
+      background: none;
+      box-shadow: none;
     }
     .bottom-row a.pdf-button {
       margin: 0;
@@ -214,7 +242,10 @@
     </a>
 
     <div class="bottom-row">
-      <a href="https://www.google.com/maps/place/Escapsul+VR/data=!4m2!3m1!1s0x0:0xd4f8fe8269dee504?sa=X&ved=1t:2428&ictx=111" target="_blank" class="google-maps-button" rel="noopener noreferrer">
+      <a href="src/funcionarios.html" class="funcionarios-button" rel="noopener noreferrer" title="Funcionários">
+        <img src="src/funcionario.png" alt="Funcionários" />
+      </a>
+      <a href="https://www.google.com/maps/place/Escapsul+VR/data=!4m2!3m1!1s0x0:0xd4f8fe8269dee504?sa=X&ved=1t:2428&ictx=111" target="_blank" class="google-maps-button" rel="noopener noreferrer" title="Google Maps">
         <img src="src/maps.png" alt="maps.png" />
       </a>
       <a href="src/selecao-veiculo.html" class="pdf-button" rel="noopener noreferrer">
