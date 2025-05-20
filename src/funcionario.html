@@ -1,122 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Funcionário Login</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #4a90e2, #145ea8);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #333;
-        }
-        .login-container {
-            background: #fff;
-            padding: 2rem 3rem;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            width: 320px;
-            text-align: center;
-            transition: 0.3s ease;
-        }
-        h2 {
-            margin-bottom: 1.5rem;
-            color: #145ea8;
-            font-weight: 700;
-        }
-        label {
-            display: block;
-            text-align: left;
-            margin-bottom: 0.25rem;
-            font-weight: 600;
-            color: #333;
-        }
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            margin-bottom: 1.25rem;
-            border: 2px solid #4a90e2;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        input[type="text"]:focus,
-        input[type="password"]:focus {
-            outline: none;
-            border-color: #145ea8;
-        }
-        button {
-            width: 100%;
-            background-color: #145ea8;
-            color: #fff;
-            padding: 0.75rem;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #0f457a;
-        }
-        .error-message {
-            color: #d32f2f;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        .welcome-message {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #145ea8;
-            margin-top: 1.5rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Funcionário - Consulta de Produtos</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #4a90e2, #145ea8);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+    .login-container, .products-container {
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 450px;
+      max-height: 90vh;
+      overflow-y: auto;
+      transition: 0.3s ease;
+      text-align: center;
+    }
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #145ea8;
+      font-weight: 700;
+    }
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.25rem;
+      font-weight: 600;
+      color: #333;
+    }
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1.25rem;
+      border: 2px solid #4a90e2;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      border-color: #145ea8;
+    }
+    button {
+      width: 100%;
+      background-color: #145ea8;
+      color: #fff;
+      padding: 0.75rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #0f457a;
+    }
+    .error-message {
+      color: #d32f2f;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+    th, td {
+      border: 1px solid #dddddd;
+      padding: 8px 10px;
+    }
+    th {
+      background-color: #4a90e2;
+      color: #fff;
+      font-weight: 700;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #f4f8fc;
+    }
+    #loadingMessage {
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #145ea8;
+    }
+  </style>
 </head>
 <body>
-    <div class="login-container" id="loginContainer">
-        <h2>Funcionário Login</h2>
-        <form id="loginForm">
-            <label for="username">Usuário</label>
-            <input type="text" id="username" name="username" placeholder="Digite seu usuário" required autofocus />
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
-            <div class="error-message" id="errorMessage" style="display:none;">Usuário ou senha incorretos.</div>
-            <button type="submit">Entrar</button>
-        </form>
-    </div>
+  <div class="login-container" id="loginContainer">
+    <h2>Funcionário Login</h2>
+    <form id="loginForm" autocomplete="off">
+      <label for="username">Usuário</label>
+      <input type="text" id="username" name="username" placeholder="Digite seu usuário" required autofocus />
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
+      <div class="error-message" id="errorMessage" style="display:none;">Usuário ou senha incorretos.</div>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
 
-    <script>
-        (function(){
-            const correctUser = "admin";
-            const correctPass = "admin";
+  <div class="products-container" id="productsContainer" style="display:none;">
+    <h2>Produtos</h2>
+    <div id="loadingMessage">Carregando planilha...</div>
+    <table id="productsTable" style="display:none;">
+      <thead></thead>
+      <tbody></tbody>
+    </table>
+    <div id="loadError" style="color:#d32f2f; font-weight:600; margin-top:1rem; display:none;">Erro ao carregar a planilha produtos.xlsx.</div>
+  </div>
 
-            const form = document.getElementById('loginForm');
-            const errorMessage = document.getElementById('errorMessage');
-            const container = document.getElementById('loginContainer');
+  <!-- SheetJS library for parsing Excel files -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const user = form.username.value.trim();
-                const pass = form.password.value;
+  <script>
+    (function(){
+      const correctUser = "admin";
+      const correctPass = "admin";
 
-                if (user === correctUser && pass === correctPass) {
-                    // Clear content and show "Hello World"
-                    container.innerHTML = '<div class="welcome-message">Hello World</div>';
-                } else {
-                    errorMessage.style.display = 'block';
-                }
-            });
-        })();
-    </script>
+      const loginForm = document.getElementById('loginForm');
+      const errorMessage = document.getElementById('errorMessage');
+      const loginContainer = document.getElementById('loginContainer');
+      const productsContainer = document.getElementById('productsContainer');
+      const productsTable = document.getElementById('productsTable');
+      const loadingMessage = document.getElementById('loadingMessage');
+      const loadError = document.getElementById('loadError');
+
+      function renderTableHeaders(data) {
+        const thead = productsTable.querySelector('thead');
+        thead.innerHTML = '';
+        if (data.length === 0) return;
+
+        const tr = document.createElement('tr');
+        Object.keys(data[0]).forEach(key => {
+          const th = document.createElement('th');
+          th.textContent = key;
+          tr.appendChild(th);
+        });
+        thead.appendChild(tr);
+      }
+
+      function renderTableBody(data) {
+        const tbody = productsTable.querySelector('tbody');
+        tbody.innerHTML = '';
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          Object.values(row).forEach(cell => {
+            const td = document.createElement('td');
+            td.textContent = cell;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      }
+
+      async function fetchAndRenderExcel() {
+        loadingMessage.style.display = 'block';
+        productsTable.style.display = 'none';
+        loadError.style.display = 'none';
+
+        try {
+          const response = await fetch('src/produtos.xlsx');
+          if (!response.ok) throw new Error('HTTP error ' + response.status);
+          const arrayBuffer = await response.arrayBuffer();
+          const data = new Uint8Array(arrayBuffer);
+          const workbook = XLSX.read(data, {type: 'array'});
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          const jsonData = XLSX.utils.sheet_to_json(worksheet, {defval: ""});
+
+          if (jsonData.length === 0) {
+            loadingMessage.textContent = 'A planilha está vazia.';
+            return;
+          }
+
+          renderTableHeaders(jsonData);
+          renderTableBody(jsonData);
+
+          loadingMessage.style.display = 'none';
+          productsTable.style.display = 'table';
+        } catch (err) {
+          loadingMessage.style.display = 'none';
+          loadError.style.display = 'block';
+          console.error('Erro ao carregar a planilha:', err);
+        }
+      }
+
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const user = loginForm.username.value.trim();
+        const pass = loginForm.password.value;
+
+        if (user === correctUser && pass === correctPass) {
+          errorMessage.style.display = 'none';
+          loginContainer.style.display = 'none';
+          productsContainer.style.display = 'block';
+          fetchAndRenderExcel();
+        } else {
+          errorMessage.style.display = 'block';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
 
