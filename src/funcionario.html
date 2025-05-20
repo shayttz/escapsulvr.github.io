@@ -174,7 +174,7 @@
         loadError.style.display = 'none';
 
         try {
-          const response = await fetch('src/produtos.xlsx');
+          const response = await fetch('produtos.xlsx');
           if (!response.ok) throw new Error('HTTP error ' + response.status);
           const arrayBuffer = await response.arrayBuffer();
           const data = new Uint8Array(arrayBuffer);
