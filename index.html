@@ -28,6 +28,7 @@
       flex-direction: column;
       align-items: center;
       gap: 16px;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
     }
     /* Logo */
     .logo {
@@ -35,7 +36,8 @@
       height: 100px;
       border-radius: 20px;
       object-fit: cover;
-      border: none; /* Removed blue border */
+      border: none;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
     /* Text */
     .name {
@@ -43,7 +45,8 @@
       color: black;
       text-align: center;
       line-height: 1.2;
-      font-weight: 500;
+      font-weight: 600;
+      text-shadow: 0 1px 1px rgba(255,255,255,0.6);
     }
     .title {
       font-size: 14px;
@@ -52,72 +55,73 @@
       line-height: 1.2;
       margin-top: -4px;
       font-weight: 400;
+      text-shadow: 0 1px 1px rgba(255,255,255,0.5);
     }
     /* Buttons */
-    a.button, a.whatsapp {
-      display: block;
+    a.button, a.whatsapp, .pdf-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       width: 100%;
       max-width: 220px;
       font-size: 14px;
-      color: black;
+      color: white;
       text-align: center;
       text-decoration: none;
-      border: 4px solid #1a9de0;
-      border-radius: 10px;
-      padding: 4px 0;
+      border-radius: 12px;
+      padding: 10px 0;
       font-family: Arial, sans-serif;
       cursor: pointer;
-      background: none;
       box-sizing: border-box;
-      margin-top: 4px;
+      margin-top: 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      background: linear-gradient(135deg, #1a73e8, #4a90e2);
+      border: none;
+      position: relative;
     }
-    a.whatsapp i {
-      margin-right: 6px;
+    a.button:hover, a.whatsapp:hover, .pdf-button:hover {
+      background: linear-gradient(135deg, #4a90e2, #1a73e8);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+      transform: translateY(-2px);
+      color: #e0eaff;
+      text-shadow: 0 0 5px rgba(255,255,255,0.7);
+    }
+    /* WhatsApp logo image */
+    .whatsapp-logo {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
+      margin-left: 6px; /* Added margin-left to push it right */
     }
     /* Google Maps button */
     .google-maps-button {
       display: inline-block;
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 0;
-      margin-top: 4px;
+      margin-top: 8px;
       width: 50px;
       height: 50px;
       box-sizing: border-box;
-      border: none; /* Removed blue border */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      transition: box-shadow 0.3s ease;
+      border: none;
+      background: white;
+    }
+    .google-maps-button:hover {
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
     }
     .google-maps-button img {
       width: 50px;
       height: 50px;
-      border-radius: 10px;
+      border-radius: 12px;
       display: block;
       object-fit: cover;
-      border: none; /* Ensure no border on image */
-    }
-    /* PDF button */
-    .pdf-button {
-      display: inline-block;
-      max-width: 220px;
-      width: 100%;
-      font-size: 14px;
-      color: black;
-      text-align: center;
-      text-decoration: none;
-      border: 4px solid #1a9de0;
-      border-radius: 10px;
-      padding: 4px 0;
-      font-family: Arial, sans-serif;
-      cursor: pointer;
-      background: none;
-      margin-top: 4px;
-      box-sizing: border-box;
-    }
-    /* Placeholder text */
-    .placeholder-text {
-      font-size: 12px;
-      color: black;
-      text-align: center;
-      margin-top: 12px;
-      line-height: 1.2;
+      border: none;
     }
     /* Bottom row with maps and "qual a minha peça?" aligned horizontally */
     .bottom-row {
@@ -126,14 +130,14 @@
       align-items: center;
       width: 100%;
       max-width: 220px;
-      margin-top: 4px;
-      gap: 8px;
+      margin-top: 8px;
+      gap: 12px;
       box-sizing: border-box;
     }
-    /* Override to place maps and "qual a minha peça?" side by side */
     .bottom-row .google-maps-button {
       margin: 0;
       flex-shrink: 0;
+      background: white;
     }
     .bottom-row a.pdf-button {
       margin: 0;
@@ -141,6 +145,27 @@
       padding-left: 12px;
       padding-right: 12px;
       white-space: nowrap;
+      background: linear-gradient(135deg, #1a73e8, #4a90e2);
+      color: white;
+      font-weight: 600;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+      border: none;
+      transition: all 0.3s ease;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .bottom-row a.pdf-button:hover {
+      background: linear-gradient(135deg, #4a90e2, #1a73e8);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+      transform: translateY(-2px);
+      color: #e0eaff;
+      text-shadow: 0 0 5px rgba(255,255,255,0.7);
     }
     /* Responsive */
     @media (max-width: 360px) {
@@ -158,7 +183,7 @@
       .bottom-row a.pdf-button {
         flex-grow: unset;
         width: 100%;
-        padding: 4px 0;
+        padding: 10px 0;
       }
     }
   </style>
@@ -178,10 +203,12 @@
 
     <a href="https://wa.me/+5524999314770" target="_blank" class="button whatsapp" rel="noopener noreferrer">
       WhatsApp do telefone Fixo
+      <img src="src/wplogo.png" alt="WhatsApp logo" class="whatsapp-logo" />
     </a>
 
     <a href="https://wa.me/+552433466113" target="_blank" class="button whatsapp" rel="noopener noreferrer">
       WhatsApp do telefone celular
+      <img src="src/wplogo.png" alt="WhatsApp logo" class="whatsapp-logo" />
     </a>
 
     <div class="bottom-row">
