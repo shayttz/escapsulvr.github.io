@@ -70,7 +70,7 @@
       text-align: center;
       text-decoration: none;
       border-radius: 12px;
-      padding: 10px 0;
+      padding: 10px 0 10px 16px; /* Added left padding */
       font-family: Arial, sans-serif;
       cursor: pointer;
       box-sizing: border-box;
@@ -95,8 +95,9 @@
       height: 28px;
       object-fit: contain;
       filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
-      margin-right: 12px; /* Moved to left side with margin-right for spacing */
+      margin-right: 12px;
       margin-left: 0;
+      flex-shrink: 0;
     }
     /* Google Maps button */
     .google-maps-button {
