@@ -33,9 +33,9 @@
     .logo {
       width: 100px;
       height: 100px;
-      border: 4px solid #1a9de0;
       border-radius: 20px;
       object-fit: cover;
+      border: none; /* Removed blue border */
     }
     /* Text */
     .name {
@@ -77,13 +77,13 @@
     /* Google Maps button */
     .google-maps-button {
       display: inline-block;
-      border: 4px solid #1a9de0;
       border-radius: 10px;
       padding: 0;
       margin-top: 4px;
       width: 50px;
       height: 50px;
       box-sizing: border-box;
+      border: none; /* Removed blue border */
     }
     .google-maps-button img {
       width: 50px;
@@ -91,6 +91,7 @@
       border-radius: 10px;
       display: block;
       object-fit: cover;
+      border: none; /* Ensure no border on image */
     }
     /* PDF button */
     .pdf-button {
@@ -171,8 +172,7 @@
       em Volta Redonda - RJ
     </div>
 
-    <!-- Updated button to open local PDF in new tab -->
-    <a href="src/Catalogo2025.pdf" target="_blank" class="button" rel="noopener noreferrer">
+    <a href="src/catalogo-miudezas.pdf" target="_blank" class="button" rel="noopener noreferrer">
       catalogo virtual de miudezas
     </a>
 
