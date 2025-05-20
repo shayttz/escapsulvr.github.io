@@ -6,6 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    flex-direction: column; /* Garante estrutura vertical */
 }
 
 .container {
@@ -104,37 +105,45 @@ body {
     }
 }
 
-#imagem-container img {
-    width: 1276px;
-    height: 308px;
-    border: 1px solid #ccc;
+/* Correção do posicionamento da imagem */
+#imagem-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
     padding: 10px;
     background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+    margin-top: 40px; /* Ajustado para evitar sobreposição */
+}
+
+#imagem-container img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
     visibility: hidden;
     object-fit: contain;
 }
 
+/* Ajuste para os dropdowns ficarem à esquerda */
 .selecao-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Agora os dropdowns estão alinhados à esquerda */
-    justify-content: center;
+    align-items: flex-start; /* Mantém alinhamento à esquerda */
+    justify-content: flex-start;
     text-align: left;
     gap: 15px;
-    position: absolute;
-    left: 10%; /* Mantém um leve deslocamento para garantir alinhamento */
-}
-
-#imagem-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    width: 100%;
+    width: 300px;
+    position: relative;
+    margin-right: auto; /* Garante que fique na esquerda */
 }
 
 .selecao-container select {
     padding: 10px;
     margin: 10px;
     font-size: 16px;
-    width: 250px; /* Dropdowns mais largos para melhor usabilidade */
+    width: 250px;
 }
