@@ -36,36 +36,30 @@
     <script>
         const dados = {
             chevrolet: {
-                agile: ["1.4 (2009 em diante)"],
-                astra_antigo: ["Versão Antiga"],
-                astra_frente_trem_09: ["Frente Trem 2009"],
-                astra_frente_trem: ["Frente Trem"],
-                astra_iraquiano: ["Versão Iraquiana"],
-                captiva: ["Todas as versões"],
-                celta_2000_2005: ["2000-2005"],
-                celta_2006_2009: ["2006-2009"],
-                celta_2010_2011: ["2010-2011"],
-                celta_2012_em_diante: ["2012 em diante"]
+                agile: ["Agile 1.4 2009 em diante"],
+                astra: ["Astra Antigo", "Astra Frente Trem 09", "Astra Frente Trem", "Astra Iraquiano"],
+                captiva: ["Captiva 2.4 2008-2009"],
+                celta: ["Celta 2000-2005", "Celta 2006-2009", "Celta 2010-2011", "Celta 2012 em diante"]
             },
             fiat: {
-                elba_85_91: ["1985-1991"],
-                palio_15_1996_2000: ["1.5 1996-2000"]
+                elba: ["Elba 85-91"],
+                palio: ["Palio 1.5 1996-2000"]
             }
         };
 
         const imagensCatalogo = {
-            "chevrolet-agile-1.4 (2009 em diante)": "img/chevrolet/agile/1.png",
-            "chevrolet-astra_antigo-Versão Antiga": "img/chevrolet/astra antigo/1.png",
-            "chevrolet-astra_frente_trem_09-Frente Trem 2009": "img/chevrolet/astra frente trem 09/1.png",
-            "chevrolet-astra_frente_trem-Frente Trem": "img/chevrolet/astra frente trem/1.png",
-            "chevrolet-astra_iraquiano-Versão Iraquiana": "img/chevrolet/astra iraquiano/1.png",
-            "chevrolet-captiva-Todas as versões": "img/chevrolet/captiva/1.png",
-            "chevrolet-celta_2000_2005-2000-2005": "img/chevrolet/celta 2000-2005/1.png",
-            "chevrolet-celta_2006_2009-2006-2009": "img/chevrolet/celta 2006-2009/1.png",
-            "chevrolet-celta_2010_2011-2010-2011": "img/chevrolet/celta 2010-2011/1.png",
-            "chevrolet-celta_2012_em_diante-2012 em diante": "img/chevrolet/celta 2012 em diante/1.png",
-            "fiat-elba_85_91-1985-1991": "img/fiat/elba 85-91/1.png",
-            "fiat-palio_15_1996_2000-1.5 1996-2000": "img/fiat/palio 1.5 1996-2000/1.png"
+            "chevrolet-agile-Agile 1.4 2009 em diante": "src/img/chevrolet/agile/agile 1.4 2009/1.png",
+            "chevrolet-astra-Astra Antigo": "src/img/chevrolet/astra/astra antigo/1.png",
+            "chevrolet-astra-Astra Frente Trem 09": "src/img/chevrolet/astra/astra frente trem 09/1.png",
+            "chevrolet-astra-Astra Frente Trem": "src/img/chevrolet/astra/astra frente trem/1.png",
+            "chevrolet-astra-Astra Iraquiano": "src/img/chevrolet/astra/astra iraquiano/1.png",
+            "chevrolet-captiva-Captiva 2.4 2008-2009": "src/img/chevrolet/captiva/captiva 2.4 2008-2009/1.png",
+            "chevrolet-celta-Celta 2000-2005": "src/img/chevrolet/celta/celta 2000-2005/1.png",
+            "chevrolet-celta-Celta 2006-2009": "src/img/chevrolet/celta/celta 2006-2009/1.png",
+            "chevrolet-celta-Celta 2010-2011": "src/img/chevrolet/celta/celta 2010-2011/1.png",
+            "chevrolet-celta-Celta 2012 em diante": "src/img/chevrolet/celta/celta 2012 em diante/1.png",
+            "fiat-elba-Elba 85-91": "src/img/fiat/elba/elba 85-91/1.png",
+            "fiat-palio-Palio 1.5 1996-2000": "src/img/fiat/palio/palio 1.5 1996-2000/1.png"
         };
 
         function atualizarModelos() {
@@ -75,7 +69,7 @@
 
             if (marca && dados[marca]) {
                 Object.keys(dados[marca]).forEach(modelo => {
-                    modeloSelect.innerHTML += `<option value="${modelo}">${modelo.replace(/_/g, " ")}</option>`;
+                    modeloSelect.innerHTML += `<option value="${modelo}">${modelo.charAt(0).toUpperCase() + modelo.slice(1)}</option>`;
                 });
             }
 
