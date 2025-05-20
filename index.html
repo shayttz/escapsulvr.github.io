@@ -95,7 +95,7 @@
       height: 28px;
       object-fit: contain;
       filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
-      margin-left: 6px; /* Reduced margin-left to bring logo closer to text */
+      margin-left: 6px;
     }
     /* Google Maps button */
     .google-maps-button {
@@ -108,8 +108,8 @@
       box-sizing: border-box;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
       transition: box-shadow 0.3s ease;
-      border: none;
-      background: white;
+      border: transparent; /* Changed border to transparent */
+      background: none; /* Removed background to keep it clean */
     }
     .google-maps-button:hover {
       box-shadow: 0 8px 16px rgba(0,0,0,0.3);
@@ -122,6 +122,7 @@
       display: block;
       object-fit: cover;
       border: none;
+      background: none;
     }
     /* Bottom row with maps and "qual a minha peça?" aligned horizontally */
     .bottom-row {
@@ -137,7 +138,8 @@
     .bottom-row .google-maps-button {
       margin: 0;
       flex-shrink: 0;
-      background: white;
+      background: none; /* Removed background */
+      box-shadow: none; /* Removed shadow for cleaner look */
     }
     .bottom-row a.pdf-button {
       margin: 0;
