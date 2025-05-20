@@ -1,53 +1,196 @@
-<!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Responsivo</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="src/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Escapsul VR</title>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <style>
+    /* Reset and base */
+    body, html {
+      margin: 0;
+      padding: 0;
+      background-color: #239c44;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: #a7d600;
+      border: 2px solid black;
+      border-radius: 60px;
+      width: 320px;
+      max-width: 100%;
+      padding: 24px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    /* Logo */
+    .logo {
+      width: 100px;
+      height: 100px;
+      border: 4px solid #1a9de0;
+      border-radius: 20px;
+      object-fit: cover;
+    }
+    /* Text */
+    .name {
+      font-size: 14px;
+      color: black;
+      text-align: center;
+      line-height: 1.2;
+      font-weight: 500;
+    }
+    .title {
+      font-size: 14px;
+      color: black;
+      text-align: center;
+      line-height: 1.2;
+      margin-top: -4px;
+      font-weight: 400;
+    }
+    /* Buttons */
+    a.button, a.whatsapp {
+      display: block;
+      width: 100%;
+      max-width: 220px;
+      font-size: 14px;
+      color: black;
+      text-align: center;
+      text-decoration: none;
+      border: 4px solid #1a9de0;
+      border-radius: 10px;
+      padding: 4px 0;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      background: none;
+      box-sizing: border-box;
+      margin-top: 4px;
+    }
+    a.whatsapp i {
+      margin-right: 6px;
+    }
+    /* Google Maps button */
+    .google-maps-button {
+      display: inline-block;
+      border: 4px solid #1a9de0;
+      border-radius: 10px;
+      padding: 0;
+      margin-top: 4px;
+      width: 50px;
+      height: 50px;
+      box-sizing: border-box;
+    }
+    .google-maps-button img {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      display: block;
+      object-fit: cover;
+    }
+    /* PDF button */
+    .pdf-button {
+      display: inline-block;
+      max-width: 220px;
+      width: 100%;
+      font-size: 14px;
+      color: black;
+      text-align: center;
+      text-decoration: none;
+      border: 4px solid #1a9de0;
+      border-radius: 10px;
+      padding: 4px 0;
+      font-family: Arial, sans-serif;
+      cursor: pointer;
+      background: none;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+    /* Placeholder text */
+    .placeholder-text {
+      font-size: 12px;
+      color: black;
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.2;
+    }
+    /* Bottom row with maps and "qual a minha peça?" aligned horizontally */
+    .bottom-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 220px;
+      margin-top: 4px;
+      gap: 8px;
+      box-sizing: border-box;
+    }
+    /* Override to place maps and "qual a minha peça?" side by side */
+    .bottom-row .google-maps-button {
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .bottom-row a.pdf-button {
+      margin: 0;
+      flex-grow: 1;
+      padding-left: 12px;
+      padding-right: 12px;
+      white-space: nowrap;
+    }
+    /* Responsive */
+    @media (max-width: 360px) {
+      .container {
+        width: 90vw;
+        padding: 16px;
+      }
+      a.button, a.whatsapp, .pdf-button, .bottom-row {
+        max-width: 100%;
+      }
+      .bottom-row {
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .bottom-row a.pdf-button {
+        flex-grow: unset;
+        width: 100%;
+        padding: 4px 0;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <img src="src/logo 500x500.png" alt="Logo" class="logo">
-        <div class="name">Escapsul VR</div>
-        <div class="title">Loja especializada no comércio de Escapamentos Automotivos<br>
-        em Volta Redonda - RJ
-        </div>
-
-        <!-- Botão do catálogo -->
-        <a href="https://www.canva.com/design/DAGmBtGvTqY/NOKnUl4j81fQUmDz4whxww/view?utm_content=DAGmBtGvTqY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdffe7b81bf" target="_blank" class="button">Acesse nosso catálogo virtual!</a>
-
-        <!-- Botão do WhatsApp 1 -->
-        <a href="https://wa.me/+5524999314770" target="_blank" class="button whatsapp">
-            <i class="fab fa-whatsapp"></i> Fale conosco!
-        </a>
-
-        <!-- Botão do WhatsApp 2 -->
-        <a href="https://wa.me/+552433466113" target="_blank" class="button whatsapp">
-            <i class="fab fa-whatsapp"></i> Suporte ao cliente
-        </a>
-
-        <!-- Botão do Google Maps -->
-        <a href="https://www.google.com/maps/place/Escapsul+VR/data=!4m2!3m1!1s0x0:0xd4f8fe8269dee504?sa=X&ved=1t:2428&ictx=111" target="_blank" class="google-maps-button">
-            <img src="src/maps.png" alt="Google Maps">
-        </a>
-        
-        <!-- Botão para abrir o catálogo -->
-        <a href="src/view.html" target="_blank" class="pdf-button">Abrir Catálogo</a>
-
-        <!-- Novo botão: Qual a minha peça? -->
-        <a href="src/selecao-veiculo.html" class="button">
-            Qual a minha peça?
-        </a>
-
-        <div class="placeholder-text">
-            finge que tem muita coisa escrita aqui<br>
-            finge que tem muita coisa escrita aqui<br>
-            finge que tem muita coisa escrita aqui<br>
-            finge que tem muita coisa escrita aqui<br>
-            finge que tem muita coisa escrita aqui<br>
-        </div>
+  <div class="container">
+    <img src="src/logo 500x500.png" alt="Logo 500x500" class="logo" />
+    <div class="name">Escapsul VR</div>
+    <div class="title">
+      Loja especializada no comércio de Escapamentos Automotivos<br />
+      em Volta Redonda - RJ
     </div>
+
+    <a href="https://www.canva.com/design/DAGmBtGvTqY/NOKnUl4j81fQUmDz4whxww/view?utm_content=DAGmBtGvTqY&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hdffe7b81bf" target="_blank" class="button">
+      catalogo virtual de miudezas
+    </a>
+
+    <a href="https://wa.me/+5524999314770" target="_blank" class="button whatsapp">
+      WhatsApp do telefone Fixo
+    </a>
+
+    <a href="https://wa.me/+552433466113" target="_blank" class="button whatsapp">
+      WhatsApp do telefone celular
+    </a>
+
+    <div class="bottom-row">
+      <a href="https://www.google.com/maps/place/Escapsul+VR/data=!4m2!3m1!1s0x0:0xd4f8fe8269dee504?sa=X&ved=1t:2428&ictx=111" target="_blank" class="google-maps-button">
+        <img src="src/maps.png" alt="maps.png" />
+      </a>
+      <a href="src/selecao-veiculo.html" class="pdf-button">
+        qual a minha peça?
+      </a>
+    </div>
+  </div>
 </body>
 </html>
