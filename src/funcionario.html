@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Funcionário Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #4a90e2, #145ea8);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+        .login-container {
+            background: #fff;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            width: 320px;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+        h2 {
+            margin-bottom: 1.5rem;
+            color: #145ea8;
+            font-weight: 700;
+        }
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+            color: #333;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 1.25rem;
+            border: 2px solid #4a90e2;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #145ea8;
+        }
+        button {
+            width: 100%;
+            background-color: #145ea8;
+            color: #fff;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0f457a;
+        }
+        .error-message {
+            color: #d32f2f;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .welcome-message {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #145ea8;
+            margin-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container" id="loginContainer">
+        <h2>Funcionário Login</h2>
+        <form id="loginForm">
+            <label for="username">Usuário</label>
+            <input type="text" id="username" name="username" placeholder="Digite seu usuário" required autofocus />
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
+            <div class="error-message" id="errorMessage" style="display:none;">Usuário ou senha incorretos.</div>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <script>
+        (function(){
+            const correctUser = "admin";
+            const correctPass = "admin";
+
+            const form = document.getElementById('loginForm');
+            const errorMessage = document.getElementById('errorMessage');
+            const container = document.getElementById('loginContainer');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const user = form.username.value.trim();
+                const pass = form.password.value;
+
+                if (user === correctUser && pass === correctPass) {
+                    // Clear content and show "Hello World"
+                    container.innerHTML = '<div class="welcome-message">Hello World</div>';
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
+
