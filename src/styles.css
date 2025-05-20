@@ -5,7 +5,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif; /* Corrigido */
+    font-family: Arial, sans-serif;
 }
 
 .container {
@@ -13,31 +13,31 @@ body {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
-    width: 400px; /* Ajustado para não ser muito pequeno */
+    width: 400px;
     max-width: 90%;
 }
 
 .logo {
-    width: 80px; /* Aumentei para melhor visibilidade */
+    width: 80px;
     height: 80px;
     margin-bottom: 20px;
 }
 
 .name {
     font-weight: bold;
-    font-size: 1.4em; /* Melhorando visibilidade */
+    font-size: 1.4em;
 }
 
 .title {
     color: gray;
     margin-bottom: 20px;
-    font-size: 1.1em; /* Pequena melhoria */
+    font-size: 1.1em;
 }
 
 .button {
     background-color: #4CAF50;
     color: white;
-    padding: 12px 22px; /* Melhor ajuste */
+    padding: 12px 22px;
     border: 2px solid #388E3C;
     border-radius: 5px;
     cursor: pointer;
@@ -46,8 +46,8 @@ body {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    font-size: 1.1em; /* Ajustado */
-    width: 85%; /* Melhorei o espaçamento */
+    font-size: 1.1em;
+    width: 85%;
     text-decoration: none;
 }
 
@@ -92,7 +92,7 @@ body {
 }
 
 #pdf-container {
-    width: 85vw; /* Pequeno ajuste */
+    width: 85vw;
     height: auto;
     max-width: 1240px;
 }
@@ -105,25 +105,24 @@ body {
 }
 
 #imagem-container img {
-    width: 1276px; /* Ajustado para não ficar exagerado */
+    width: 1276px;
     height: 308px;
     border: 1px solid #ccc;
     padding: 10px;
     background-color: white;
     visibility: hidden;
-    object-fit: contain; /* Melhor para manter a proporção */
+    object-fit: contain;
 }
 
 .selecao-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    text-align: center;
-    width: 100%;
-    margin: auto; /* Garante centralização */
-    position: relative;
-    left: -5%; /* Move um pouco para a esquerda */
+    align-items: flex-start; /* Agora os dropdowns estão alinhados à esquerda */
+    justify-content: center;
+    text-align: left;
+    gap: 15px;
+    position: absolute;
+    left: 10%; /* Mantém um leve deslocamento para garantir alinhamento */
 }
 
 #imagem-container {
@@ -131,13 +130,11 @@ body {
     justify-content: center;
     margin-top: 20px;
     width: 100%;
-    position: relative;
-    left: -5%; /* Move imagem para alinhar com os dropdowns */
 }
 
 .selecao-container select {
     padding: 10px;
     margin: 10px;
     font-size: 16px;
-    width: 200px; /* Define um tamanho uniforme para os dropdowns */
+    width: 250px; /* Dropdowns mais largos para melhor usabilidade */
 }
