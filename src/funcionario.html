@@ -22,7 +22,7 @@
       padding: 2rem 3rem;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: 450px;
+      width: 500px; /* Aumentado para melhor visualização */
       max-height: 90vh;
       overflow-y: auto;
       transition: 0.3s ease;
@@ -33,48 +33,23 @@
       color: #145ea8;
       font-weight: 700;
     }
-    label {
-      display: block;
-      text-align: left;
-      margin-bottom: 0.25rem;
-      font-weight: 600;
-      color: #333;
+    /* Estilos para a caixa de pesquisa */
+    .search-container {
+      margin-bottom: 1rem;
     }
-    input[type="text"],
-    input[type="password"] {
+    input[type="search"] {
       width: 100%;
       padding: 0.5rem 0.75rem;
-      margin-bottom: 1.25rem;
       border: 2px solid #4a90e2;
       border-radius: 6px;
       font-size: 1rem;
       transition: border-color 0.3s ease;
     }
-    input[type="text"]:focus,
-    input[type="password"]:focus {
+    input[type="search"]:focus {
       outline: none;
       border-color: #145ea8;
     }
-    button {
-      width: 100%;
-      background-color: #145ea8;
-      color: #fff;
-      padding: 0.75rem;
-      border: none;
-      border-radius: 6px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #0f457a;
-    }
-    .error-message {
-      color: #d32f2f;
-      margin-bottom: 1rem;
-      font-weight: 600;
-    }
+    /* Resto do CSS permanece o mesmo */
     table {
       width: 100%;
       border-collapse: collapse;
@@ -117,6 +92,12 @@
   <div class="products-container" id="productsContainer" style="display:none;">
     <h2>Produtos</h2>
     <div id="loadingMessage">Carregando planilha...</div>
+    
+    <!-- Caixa de pesquisa -->
+    <div class="search-container">
+      <input type="search" id="searchInput" placeholder="Pesquisar produto..." />
+    </div>
+    
     <table id="productsTable" style="display:none;">
       <thead></thead>
       <tbody></tbody>
@@ -124,12 +105,11 @@
     <div id="loadError" style="color:#d32f2f; font-weight:600; margin-top:1rem; display:none;">Erro ao carregar a planilha produtos.xlsx.</div>
   </div>
 
-  <!-- SheetJS library for parsing Excel files -->
   <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 
   <script>
     (function(){
-      const correctUser = "admin";
+      const correctUser  = "admin";
       const correctPass = "admin";
 
       const loginForm = document.getElementById('loginForm');
@@ -139,6 +119,9 @@
       const productsTable = document.getElementById('productsTable');
       const loadingMessage = document.getElementById('loadingMessage');
       const loadError = document.getElementById('loadError');
+      const searchInput = document.getElementById('searchInput');
+
+      let jsonData = []; // Variável para armazenar os dados da planilha
 
       function renderTableHeaders(data) {
         const thead = productsTable.querySelector('thead');
@@ -181,7 +164,7 @@
           const workbook = XLSX.read(data, {type: 'array'});
           const firstSheetName = workbook.SheetNames[0];
           const worksheet = workbook.Sheets[firstSheetName];
-          const jsonData = XLSX.utils.sheet_to_json(worksheet, {defval: ""});
+          jsonData = XLSX.utils.sheet_to_json(worksheet, {defval: ""});
 
           if (jsonData.length === 0) {
             loadingMessage.textContent = 'A planilha está vazia.';
@@ -200,12 +183,22 @@
         }
       }
 
+      function filterProducts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredData = jsonData.filter(product => {
+          return Object.values(product).some(value => 
+            String(value).toLowerCase().includes(searchTerm)
+          );
+        });
+        renderTableBody(filteredData);
+      }
+
       loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         const user = loginForm.username.value.trim();
         const pass = loginForm.password.value;
 
-        if (user === correctUser && pass === correctPass) {
+        if (user === correctUser  && pass === correctPass) {
           errorMessage.style.display = 'none';
           loginContainer.style.display = 'none';
           productsContainer.style.display = 'block';
@@ -214,8 +207,9 @@
           errorMessage.style.display = 'block';
         }
       });
+
+      searchInput.addEventListener('input', filterProducts); // Adiciona evento de pesquisa
     })();
   </script>
 </body>
 </html>
-
