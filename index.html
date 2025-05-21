@@ -9,7 +9,7 @@
     body, html {
       margin: 0;
       padding: 0;
-      background-color: #239c44;
+      background-color:  #239c44
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
@@ -21,8 +21,8 @@
       border: 2px solid black;
       border-radius: 60px;
       width: 320px;
-      max-width: 100%;
-      padding: 24px;
+      max-width: 90%;
+      padding: 32px;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -32,8 +32,8 @@
     }
     /* Logo */
     .logo {
-      width: 100px;
-      height: 100px;
+      width: 120px; /* Increased size */
+      height: 120px; /* Increased size */
       border-radius: 20px;
       object-fit: cover;
       border: none;
@@ -41,11 +41,11 @@
     }
     /* Text */
     .name {
-      font-size: 14px;
+      font-size: 18px; /* Increased size */
       color: black;
       text-align: center;
       line-height: 1.2;
-      font-weight: 600;
+      font-weight: 700; /* Bold */
       text-shadow: 0 1px 1px rgba(255,255,255,0.6);
     }
     .title {
@@ -65,12 +65,12 @@
       gap: 8px;
       width: 100%;
       max-width: 220px;
-      font-size: 14px;
+      font-size: 16px; /* Increased size */
       color: white;
       text-align: center;
       text-decoration: none;
       border-radius: 12px;
-      padding: 10px 0 10px 16px; /* Added left padding */
+      padding: 12px 0; /* Adjusted padding */
       font-family: Arial, sans-serif;
       cursor: pointer;
       box-sizing: border-box;
@@ -79,8 +79,7 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 6px rgba(0,0,0,0.15);
       background: linear-gradient(135deg, #1a73e8, #4a90e2);
-      border: none;
-      position: relative;
+      border: 2px solid white; /* Borda simples */
     }
     a.button:hover, a.whatsapp:hover, .pdf-button:hover {
       background: linear-gradient(135deg, #4a90e2, #1a73e8);
@@ -96,11 +95,10 @@
       object-fit: contain;
       filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
       margin-right: 12px;
-      margin-left: 0;
       flex-shrink: 0;
     }
     /* Google Maps button */
-    .google-maps-button {
+    .google-maps-button, .funcionarios-button {
       display: inline-block;
       border-radius: 12px;
       padding: 0;
@@ -113,38 +111,11 @@
       border: transparent;
       background: none;
     }
-    .google-maps-button:hover {
+    .google-maps-button:hover, .funcionarios-button:hover {
       box-shadow: 0 8px 16px rgba(0,0,0,0.3);
       transform: translateY(-2px);
     }
-    .google-maps-button img {
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
-      display: block;
-      object-fit: cover;
-      border: none;
-      background: none;
-    }
-    /* Funcionarios button */
-    .funcionarios-button {
-      display: inline-block;
-      border-radius: 12px;
-      padding: 0;
-      margin-top: 8px;
-      width: 50px;
-      height: 50px;
-      box-sizing: border-box;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-      transition: box-shadow 0.3s ease;
-      border: transparent;
-      background: none;
-    }
-    .funcionarios-button:hover {
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-      transform: translateY(-2px);
-    }
-    .funcionarios-button img {
+    .google-maps-button img, .funcionarios-button img {
       width: 50px;
       height: 50px;
       border-radius: 12px;
@@ -164,41 +135,6 @@
       gap: 12px;
       box-sizing: border-box;
     }
-    .bottom-row .google-maps-button,
-    .bottom-row .funcionarios-button {
-      margin: 0;
-      flex-shrink: 0;
-      background: none;
-      box-shadow: none;
-    }
-    .bottom-row a.pdf-button {
-      margin: 0;
-      flex-grow: 1;
-      padding-left: 12px;
-      padding-right: 12px;
-      white-space: nowrap;
-      background: linear-gradient(135deg, #1a73e8, #4a90e2);
-      color: white;
-      font-weight: 600;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-      border: none;
-      transition: all 0.3s ease;
-      text-align: center;
-      text-decoration: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    .bottom-row a.pdf-button:hover {
-      background: linear-gradient(135deg, #4a90e2, #1a73e8);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-      transform: translateY(-2px);
-      color: #e0eaff;
-      text-shadow: 0 0 5px rgba(255,255,255,0.7);
-    }
     /* Responsive */
     @media (max-width: 360px) {
       .container {
@@ -211,11 +147,6 @@
       .bottom-row {
         flex-wrap: wrap;
         gap: 8px;
-      }
-      .bottom-row a.pdf-button {
-        flex-grow: unset;
-        width: 100%;
-        padding: 10px 0;
       }
     }
   </style>
@@ -234,11 +165,11 @@
     </a>
     <a href="src/selecao-veiculo.html" class="pdf-button" rel="noopener noreferrer">
         Catálogo Virtual de Peças
-      </a>
+    </a>
 
     <a href="https://wa.me/+5524999314770" target="_blank" class="button whatsapp" rel="noopener noreferrer">
       <img src="src/wplogo.png" alt="WhatsApp logo" class="whatsapp-logo" />
-      WhasApp Mecânicos
+      WhatsApp Mecânicos
     </a>
 
     <a href="https://wa.me/+552433466113" target="_blank" class="button whatsapp" rel="noopener noreferrer">
@@ -253,7 +184,6 @@
       <a href="https://www.google.com/maps/place/Escapsul+VR/data=!4m2!3m1!1s0x0:0xd4f8fe8269dee504?sa=X&ved=1t:2428&ictx=111" target="_blank" class="google-maps-button" rel="noopener noreferrer" title="Google Maps">
         <img src="src/maps.png" alt="maps.png" />
       </a>
-      
     </div>
   </div>
 </body>
