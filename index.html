@@ -9,18 +9,19 @@
     body, html {
       margin: 0;
       padding: 0;
-      background-color: #239c44; /* Mantive a cor verde */
+      background-color: #239c44;
       font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
     }
+
     .container {
       background-color: #a7d600;
       border: 2px solid black;
       border-radius: 60px;
-      width: 400px; /* Aumentei a largura da caixa */
+      width: 400px;
       max-width: 90%;
       padding: 32px;
       box-sizing: border-box;
@@ -30,24 +31,27 @@
       gap: 16px;
       box-shadow: 0 8px 15px rgba(0,0,0,0.2);
     }
+
     /* Logo */
     .logo {
-      width: 120px; /* Aumentei o tamanho */
-      height: 120px; /* Aumentei o tamanho */
+      width: 120px;
+      height: 120px;
       border-radius: 20px;
       object-fit: cover;
       border: none;
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
+
     /* Text */
     .name {
-      font-size: 18px; /* Aumentei o tamanho */
+      font-size: 18px;
       color: black;
       text-align: center;
       line-height: 1.2;
-      font-weight: 700; /* Negrito */
+      font-weight: 700;
       text-shadow: 0 1px 1px rgba(255,255,255,0.6);
     }
+
     .title {
       font-size: 14px;
       color: black;
@@ -57,20 +61,21 @@
       font-weight: 400;
       text-shadow: 0 1px 1px rgba(255,255,255,0.5);
     }
+
     /* Buttons */
     a.button, a.whatsapp, .pdf-button {
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: center; /* <-- Centraliza o conteúdo horizontalmente */
       gap: 8px;
-      width: 100%; /* Mantive 100% para ocupar toda a largura da caixa */
-      max-width: 300px; /* Aumentei a largura máxima dos botões */
-      font-size: 16px; /* Aumentei o tamanho */
+      width: 100%;
+      max-width: 300px;
+      font-size: 16px;
       color: white;
       text-align: center;
       text-decoration: none;
       border-radius: 12px;
-      padding: 12px 0; /* Ajustei o padding */
+      padding: 12px 0;
       font-family: Arial, sans-serif;
       cursor: pointer;
       box-sizing: border-box;
@@ -79,8 +84,9 @@
       transition: all 0.3s ease;
       box-shadow: 0 4px 6px rgba(0,0,0,0.15);
       background: linear-gradient(135deg, #1a73e8, #4a90e2);
-      border: 2px solid white; /* Borda simples */
+      border: 2px solid white;
     }
+
     a.button:hover, a.whatsapp:hover, .pdf-button:hover {
       background: linear-gradient(135deg, #4a90e2, #1a73e8);
       box-shadow: 0 6px 12px rgba(0,0,0,0.25);
@@ -88,16 +94,18 @@
       color: #e0eaff;
       text-shadow: 0 0 5px rgba(255,255,255,0.7);
     }
+
     /* WhatsApp logo image */
     .whatsapp-logo {
-      width: 28px; /* Ajustei o tamanho do ícone */
-      height: 28px; /* Ajustei o tamanho do ícone */
+      width: 28px;
+      height: 28px;
       object-fit: contain;
       filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
-      margin-right: 12px; /* Mantive a margem à direita */
+      margin-right: 12px;
       flex-shrink: 0;
     }
-    /* Google Maps button */
+
+    /* Google Maps and Funcionários buttons */
     .google-maps-button, .funcionarios-button {
       display: inline-block;
       border-radius: 12px;
@@ -109,10 +117,12 @@
       border: transparent;
       background: none;
     }
+
     .google-maps-button:hover, .funcionarios-button:hover {
       box-shadow: 0 8px 16px rgba(0,0,0,0.3);
       transform: translateY(-2px);
     }
+
     .google-maps-button img, .funcionarios-button img {
       width: 50px;
       height: 50px;
@@ -122,7 +132,8 @@
       border: none;
       background: none;
     }
-    /* Bottom row with maps, funcionarios and "qual a minha peça?" aligned horizontally */
+
+    /* Bottom row */
     .bottom-row {
       display: flex;
       justify-content: space-between;
@@ -133,6 +144,7 @@
       gap: 12px;
       box-sizing: border-box;
     }
+
     /* Responsive */
     @media (max-width: 360px) {
       .container {
@@ -161,20 +173,19 @@
     <a href="src/Catalogo2025.pdf" target="_blank" class="button" rel="noopener noreferrer">
       Catálogo Virtual de Miudezas
     </a>
+
     <a href="src/selecao-veiculo.html" class="pdf-button" rel="noopener noreferrer">
-        Catálogo Virtual de Peças
+      Catálogo Virtual de Peças
     </a>
 
     <a href="https://wa.me/+5524999314770" target="_blank" class="button whatsapp" rel="noopener noreferrer">
       <img src="src/wplogo.png" alt="WhatsApp logo" class="whatsapp-logo" />
-      WhatsApp <br />
-      Mecânicos
+      <span>WhatsApp<br />Mecânicos</span>
     </a>
 
     <a href="https://wa.me/+552433466113" target="_blank" class="button whatsapp" rel="noopener noreferrer">
       <img src="src/wplogo.png" alt="WhatsApp logo" class="whatsapp-logo" />
-      WhatsApp <br />
-      Atendimento Geral
+      <span>WhatsApp<br />Atendimento Geral</span>
     </a>
 
     <div class="bottom-row">
