@@ -5,7 +5,6 @@
   <title>Escapsul VR</title>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
-    /* Reset and base */
     body, html {
       margin: 0;
       padding: 0;
@@ -32,7 +31,6 @@
       box-shadow: 0 8px 15px rgba(0,0,0,0.2);
     }
 
-    /* Logo */
     .logo {
       width: 120px;
       height: 120px;
@@ -42,7 +40,6 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
 
-    /* Text */
     .name {
       font-size: 18px;
       color: black;
@@ -62,12 +59,11 @@
       text-shadow: 0 1px 1px rgba(255,255,255,0.5);
     }
 
-    /* Buttons */
     a.button, a.whatsapp, .pdf-button {
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: center; /* <-- Centraliza o conteúdo horizontalmente */
-      gap: 8px;
+      justify-content: center;
       width: 100%;
       max-width: 300px;
       font-size: 16px;
@@ -75,7 +71,7 @@
       text-align: center;
       text-decoration: none;
       border-radius: 12px;
-      padding: 12px 0;
+      padding: 12px;
       font-family: Arial, sans-serif;
       cursor: pointer;
       box-sizing: border-box;
@@ -95,17 +91,16 @@
       text-shadow: 0 0 5px rgba(255,255,255,0.7);
     }
 
-    /* WhatsApp logo image */
     .whatsapp-logo {
+      position: absolute;
+      left: 12px;
       width: 28px;
       height: 28px;
       object-fit: contain;
       filter: drop-shadow(0 0 1px rgba(0,0,0,0.3));
-      margin-right: 12px;
       flex-shrink: 0;
     }
 
-    /* Google Maps and Funcionários buttons */
     .google-maps-button, .funcionarios-button {
       display: inline-block;
       border-radius: 12px;
@@ -133,7 +128,6 @@
       background: none;
     }
 
-    /* Bottom row */
     .bottom-row {
       display: flex;
       justify-content: space-between;
@@ -145,7 +139,6 @@
       box-sizing: border-box;
     }
 
-    /* Responsive */
     @media (max-width: 360px) {
       .container {
         width: 90vw;
@@ -180,12 +173,12 @@
 
     <a href="https://wa.me/+5524999314770" target="_blank" class="button whatsapp" rel="noopener noreferrer">
       <img src="src/wplogo.png" alt="WhatsApp logo" class="whatsapp-logo" />
-      <span>WhatsApp<br />Mecânicos</span>
+      WhatsApp<br />Mecânicos
     </a>
 
     <a href="https://wa.me/+552433466113" target="_blank" class="button whatsapp" rel="noopener noreferrer">
       <img src="src/wplogo.png" alt="WhatsApp logo" class="whatsapp-logo" />
-      <span>WhatsApp<br />Atendimento Geral</span>
+      WhatsApp<br />Atendimento Geral
     </a>
 
     <div class="bottom-row">
