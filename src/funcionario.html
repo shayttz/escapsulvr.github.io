@@ -17,12 +17,23 @@
       align-items: center;
       color: #333;
     }
-    .login-container, .products-container {
+    .login-container {
       background: #fff;
       padding: 2rem 3rem;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: 1500px; /* Aumentado para melhor visualização */
+      width: 400px; /* Largura da caixa de login */
+      max-height: 90vh;
+      overflow-y: auto;
+      transition: 0.3s ease;
+      text-align: center;
+    }
+    .products-container {
+      background: #fff;
+      padding: 2rem 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      width: 1500px; /* Largura da caixa de produtos */
       max-height: 90vh;
       overflow-y: auto;
       transition: 0.3s ease;
@@ -141,7 +152,7 @@
 
   <script>
     (function(){
-      const correctUser    = "admin";
+      const correctUser     = "admin";
       const correctPass = "admin";
 
       const loginForm = document.getElementById('loginForm');
@@ -230,7 +241,7 @@
         const user = loginForm.username.value.trim();
         const pass = loginForm.password.value;
 
-        if (user === correctUser    && pass === correctPass) {
+        if (user === correctUser     && pass === correctPass) {
           errorMessage.style.display = 'none';
           loginContainer.style.display = 'none';
           productsContainer.style.display = 'block';
