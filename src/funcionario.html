@@ -22,7 +22,7 @@
       padding: 2rem 3rem;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: 500px; /* Aumentado para melhor visualização */
+      width: 600px; /* Aumentado para melhor visualização */
       max-height: 90vh;
       overflow-y: auto;
       transition: 0.3s ease;
@@ -49,7 +49,7 @@
       outline: none;
       border-color: #145ea8;
     }
-    /* Resto do CSS permanece o mesmo */
+    /* Estilos para a tabela */
     table {
       width: 100%; /* Aumentado para ocupar mais espaço */
       border-collapse: collapse;
@@ -74,6 +74,38 @@
       font-weight: 600;
       color: #145ea8;
     }
+    /* Estilos para o formulário de login */
+    input[type="text"], input[type="password"] {
+      width: calc(100% - 20px); /* Ajuste para o padding */
+      padding: 0.5rem;
+      border: 2px solid #4a90e2;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 1rem; /* Espaçamento entre os campos */
+      transition: border-color 0.3s ease;
+    }
+    input[type="text"]:focus, input[type="password"]:focus {
+      outline: none;
+      border-color: #145ea8;
+    }
+    button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #145ea8;
+    }
+    .error-message {
+      color: #d32f2f;
+      font-weight: 600;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -82,7 +114,6 @@
     <form id="loginForm" autocomplete="off">
       <label for="username">Usuário</label>
       <input type="text" id="username" name="username" placeholder="Digite seu usuário" required autofocus />
-      <br /> <!-- Adicionado para separar as linhas -->
       <label for="password">Senha</label>
       <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
       <div class="error-message" id="errorMessage" style="display:none;">Usuário ou senha incorretos.</div>
@@ -110,7 +141,7 @@
 
   <script>
     (function(){
-      const correctUser   = "admin";
+      const correctUser    = "admin";
       const correctPass = "admin";
 
       const loginForm = document.getElementById('loginForm');
@@ -199,7 +230,7 @@
         const user = loginForm.username.value.trim();
         const pass = loginForm.password.value;
 
-        if (user === correctUser   && pass === correctPass) {
+        if (user === correctUser    && pass === correctPass) {
           errorMessage.style.display = 'none';
           loginContainer.style.display = 'none';
           productsContainer.style.display = 'block';
