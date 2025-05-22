@@ -51,7 +51,7 @@
     }
     /* Resto do CSS permanece o mesmo */
     table {
-      width: 100%;
+      width: 100%; /* Aumentado para ocupar mais espaço */
       border-collapse: collapse;
       margin-top: 1rem;
       font-size: 0.9rem;
@@ -82,6 +82,7 @@
     <form id="loginForm" autocomplete="off">
       <label for="username">Usuário</label>
       <input type="text" id="username" name="username" placeholder="Digite seu usuário" required autofocus />
+      <br /> <!-- Adicionado para separar as linhas -->
       <label for="password">Senha</label>
       <input type="password" id="password" name="password" placeholder="Digite sua senha" required />
       <div class="error-message" id="errorMessage" style="display:none;">Usuário ou senha incorretos.</div>
@@ -109,7 +110,7 @@
 
   <script>
     (function(){
-      const correctUser  = "admin";
+      const correctUser   = "admin";
       const correctPass = "admin";
 
       const loginForm = document.getElementById('loginForm');
@@ -198,7 +199,7 @@
         const user = loginForm.username.value.trim();
         const pass = loginForm.password.value;
 
-        if (user === correctUser  && pass === correctPass) {
+        if (user === correctUser   && pass === correctPass) {
           errorMessage.style.display = 'none';
           loginContainer.style.display = 'none';
           productsContainer.style.display = 'block';
