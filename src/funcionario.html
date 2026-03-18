@@ -22,7 +22,7 @@
       padding: 2rem 3rem;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: 400px; /* Largura da caixa de login */
+      width: 400px; 
       max-height: 90vh;
       overflow-y: auto;
       transition: 0.3s ease;
@@ -33,7 +33,7 @@
       padding: 2rem 3rem;
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      width: 1500px; /* Largura da caixa de produtos */
+      width: 1500px; 
       max-height: 90vh;
       overflow-y: auto;
       transition: 0.3s ease;
@@ -44,7 +44,7 @@
       color: #145ea8;
       font-weight: 700;
     }
-    /* Estilos para a caixa de pesquisa */
+    
     .search-container {
       margin-bottom: 1rem;
     }
@@ -60,9 +60,9 @@
       outline: none;
       border-color: #145ea8;
     }
-    /* Estilos para a tabela */
+    
     table {
-      width: 100%; /* Aumentado para ocupar mais espaço */
+      width: 100%; 
       border-collapse: collapse;
       margin-top: 1rem;
       font-size: 0.9rem;
@@ -85,14 +85,14 @@
       font-weight: 600;
       color: #145ea8;
     }
-    /* Estilos para o formulário de login */
+    
     input[type="text"], input[type="password"] {
-      width: calc(100% - 20px); /* Ajuste para o padding */
+      width: calc(100% - 20px); 
       padding: 0.5rem;
       border: 2px solid #4a90e2;
       border-radius: 6px;
       font-size: 1rem;
-      margin-bottom: 1rem; /* Espaçamento entre os campos */
+      margin-bottom: 1rem; 
       transition: border-color 0.3s ease;
     }
     input[type="text"]:focus, input[type="password"]:focus {
@@ -164,7 +164,7 @@
       const loadError = document.getElementById('loadError');
       const searchInput = document.getElementById('searchInput');
 
-      let jsonData = []; // Variável para armazenar os dados da planilha
+      let jsonData = []; 
 
       function renderTableHeaders(data) {
         const thead = productsTable.querySelector('thead');
@@ -251,7 +251,7 @@
         }
       });
 
-      searchInput.addEventListener('input', filterProducts); // Adiciona evento de pesquisa
+      searchInput.addEventListener('input', filterProducts); 
     })();
   </script>
 </body>
